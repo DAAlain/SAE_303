@@ -1,0 +1,65 @@
+body{
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+.tooltip {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    position: absolute;
+    pointer-events: none; /* Pour que le tooltip ne bloque pas les autres interactions */
+    z-index: 9999; /* S'assurer qu'il est au-dessus des autres éléments */
+    opacity: 1;
+    transition: opacity 0.1s;
+  }
+
+.btreseau{
+  display: flex;
+}
+
+.btreseau>button {
+  display: flex;
+  align-items: center;
+}
+
+.accueil{
+  min-height: 100vh;
+}
+
+header{
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  gap: 64px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  padding: 16px 32px;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-right: 16px;
+}
+
+h2 {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+.accueil{
+  padding: 64px 16px;
+}
