@@ -37,7 +37,9 @@ header{
   left: 0;
   right: 0;
   z-index: 1;
-  padding: 16px 32px;
+  margin: 16px 32px;
+  padding: 8px 16px;
+  background: #f7f7f7;
 }
 
 a {
