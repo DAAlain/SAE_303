@@ -65,3 +65,26 @@ h1 {
 .accueil{
   padding: 64px 16px;
 }
+
+.graphique{
+  min-width: 100vh;
+  min-height: 100vh;
+  background: black;
+}
+
+#map{
+  scale: 1.33;
+  transform: translateX(50%)translateY(30%);
+}
+
+.textegraphique{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 64px;
+}
+
+.titre{
+  color: white;
+}
