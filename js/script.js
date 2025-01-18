@@ -12,16 +12,18 @@ function couleur(reseau) {
     currentTooltip = "";
   }
 
+  const { data, startColor, endColor } = reseau;
+
   // Sélectionner tous les pays de la carte
   const Pays = map.querySelectorAll("path");
 
   // Parcourir chaque pays et appliquer la couleur en fonction des données
   Pays.forEach((country) => {
     const countryId = country.id; // ID du pays dans la carte, qui doit correspondre aux codes pays (ex: "FR" pour la France)
-    const countryData = reseau[countryId]; // Récupère les données pour le pays
+    const countryData = data[countryId]; // Récupère les données pour le pays
     if (countryData) {
       const value = parseFloat(countryData); // Convertir en nombre
-      const color = getColor(value); // Obtenir la couleur correspondant à l'intensité
+      const color = getColor(value, startColor, endColor); // Obtenir la couleur correspondant à l'intensité
       country.style.fill = color; // Appliquer la couleur au pays
 
       // Ajouter l'événement hover pour afficher un tooltip avec les données
@@ -56,7 +58,7 @@ function couleur(reseau) {
 }
 
 // Fonction pour mapper le temps passé sur l'application à une couleur
-function getColor(value) {
+function getColor(value, startColor, endColor) {
   const max = 50; // Temps maximal pour l'échelle
   const min = 0;  // Temps minimal pour l'échelle
 
@@ -65,10 +67,6 @@ function getColor(value) {
 
   // Normaliser la valeur entre 0 et 1
   const ratio = (value - min) / (max - min);
-
-  // Couleurs de départ (vert) et d'arrivée (rouge)
-  const startColor = { r: 0, g: 255, b: 0 }; // #00FF00
-  const endColor = { r: 255, g: 0, b: 0 };  // #FF0000
 
   // Interpoler les valeurs R, G, B
   const r = Math.round(startColor.r + ratio * (endColor.r - startColor.r));
