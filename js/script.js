@@ -2,14 +2,14 @@
 const map = document.getElementById("map");
 
 // Variable pour stocker le tooltip actuel
-let currentTooltip = null;
+let currentTooltip = "";
 
 // Fonction pour mettre une couleur et son intensité sur un pays suivant les données de chaque réseau
 function couleur(reseau) {
   // Supprimer le tooltip actuel, s'il existe
   if (currentTooltip) {
     currentTooltip.remove();
-    currentTooltip = null;
+    currentTooltip = "";
   }
 
   // Sélectionner tous les pays de la carte
@@ -45,7 +45,7 @@ function couleur(reseau) {
         // Retirer le tooltip lorsqu'on sort du pays
         country.addEventListener('mouseout', () => {
           document.removeEventListener('mousemove', updateTooltipPosition);
-          tooltip.remove(); // Retirer le tooltip du DOM
+          tooltip.remove(); 
         });
 
         // Garder une référence du tooltip actuel
@@ -57,10 +57,26 @@ function couleur(reseau) {
 
 // Fonction pour mapper le temps passé sur l'application à une couleur
 function getColor(value) {
-  const max = 50; // Temps maximal pour l'échelle 
+  const max = 50; // Temps maximal pour l'échelle
   const min = 0;  // Temps minimal pour l'échelle
-  const colorScale = d3.scaleLinear().domain([min, max]).range(["#00FF00", "#FF0000"]); // Vert à rouge
-  return colorScale(value);
+
+  // Clamp la valeur entre min et max
+  value = Math.max(min, Math.min(max, value));
+
+  // Normaliser la valeur entre 0 et 1
+  const ratio = (value - min) / (max - min);
+
+  // Couleurs de départ (vert) et d'arrivée (rouge)
+  const startColor = { r: 0, g: 255, b: 0 }; // #00FF00
+  const endColor = { r: 255, g: 0, b: 0 };  // #FF0000
+
+  // Interpoler les valeurs R, G, B
+  const r = Math.round(startColor.r + ratio * (endColor.r - startColor.r));
+  const g = Math.round(startColor.g + ratio * (endColor.g - startColor.g));
+  const b = Math.round(startColor.b + ratio * (endColor.b - startColor.b));
+
+  // Convertir en format hexadécimal
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 // Écouteurs pour les boutons

@@ -10,7 +10,7 @@ body{
     padding: 5px;
     font-size: 12px;
     position: absolute;
-    pointer-events: none; /* Pour que le tooltip ne bloque pas les autres interactions */
+    pointer-events: none; /* Pour que le tooltip ne bloque pas les autres interactions
     z-index: 9999; /* S'assurer qu'il est au-dessus des autres éléments */
     opacity: 1;
     transition: opacity 0.1s;
@@ -72,10 +72,6 @@ h1 {
   background: black;
 }
 
-#map{
-  scale: 1.33;
-  transform: translateX(50%)translateY(30%);
-}
 
 .textegraphique{
   display: flex;
