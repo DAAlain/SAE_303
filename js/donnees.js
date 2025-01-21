@@ -340,8 +340,8 @@ Reseaux = {
             JP: "0.6",
             RU: "1.067"
         },
-        startColor: { r: 255, g: 252, b: 0 },
-        endColor: { r: 150, g: 150, b: 0 }
+        startColor: { r: 255, g: 235, b: 112 },
+        endColor: { r: 255, g: 221, b: 128 }
 
     },
     X: {
@@ -396,8 +396,8 @@ Reseaux = {
             JP: "8.317",
             RU: "1.583"
         },
-        startColor: { r: 0, g: 0, b: 0 },
-        endColor: { r: 50, g: 50, b: 50 }
+        startColor: { r: 74, g: 74, b: 74 },
+        endColor: { r: 47, g: 47, b: 47 }
     }
 
 }

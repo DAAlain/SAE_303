@@ -1,7 +1,25 @@
-body{
-  margin: 0;
+* {
   scroll-behavior: smooth;
 }
+
+body{
+  margin: 0;
+}
+
+.bakbak-one-regular {
+  font-family: "Bakbak One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.exo-regular {
+  font-family: "Exo", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 .tooltip {
     background-color: rgba(0, 0, 0, 0.7);
@@ -18,33 +36,103 @@ body{
 
 .btreseau{
   display: flex;
+  gap: 8px;
 }
 
 .btreseau>button {
   display: flex;
   align-items: center;
+  font-size: 16px;
 }
+
+button{
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover{
+  color: #f7f7f7;
+}
+
+#facebook:hover{
+  background: rgb(59, 89, 152);
+}
+
+#youtube:hover{
+  background: rgb(255, 0, 0);
+}
+
+#instagram:hover{
+  background: rgb(193, 53, 132);
+}
+
+#tiktok:hover{
+  background: rgb(0, 100, 100);
+}
+
+#linkedin:hover{
+  background: rgb(0, 119, 181);
+}
+
+#snapchat:hover{
+  background: rgb(255, 235, 112);
+}
+
+#x:hover{
+  background: rgb(74, 74, 74);
+}
+
+
+
+
+
+
+
 
 .accueil{
   min-height: 100vh;
+  background: #1B1F3B;
+  padding: 96px 16px;
+  color: #d4d4d4;
+  display: flex;
+  justify-content: space-around;
+  gap: 64px;
+}
+
+.texteaccueil{
+  margin-left: 64px;
+}
+
+.texteaccueil>h1{
+  display: flex;
+  justify-content: center;
+}
+
+.graphiqueaccueil{
+  margin-right: 64px;
 }
 
 header{
   position: fixed;
   display: flex;
   justify-content: space-between;
-  gap: 64px;
   left: 0;
   right: 0;
   z-index: 1;
   margin: 16px 32px;
-  padding: 8px 16px;
+  padding: 16px 32px;
   background: #f7f7f7;
+  border-radius: 16px;
 }
 
 a {
   text-decoration: none;
-  color: blue;
+  color: #8B5CF6;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 nav {
@@ -62,14 +150,19 @@ h1 {
   margin: 0;
 }
 
-.accueil{
-  padding: 64px 16px;
+.logo{
+  font-size: 20px;
 }
 
+
 .graphique{
-  min-width: 100vh;
-  min-height: 100vh;
-  background: black;
+  min-width: 100%;
+  height: 100vh;
+  background: #1B1F3B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
 }
 
 
@@ -79,8 +172,16 @@ h1 {
   justify-content: center;
   align-items: center;
   padding-top: 64px;
+  gap: 16px;
 }
 
 .titre{
-  color: white;
+  color: #f0f0f0;
+  font-size: 50px;
+}
+
+#map{
+  position: relative;
+  width: 1020px;
+  height: 650px;
 }
