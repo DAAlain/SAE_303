@@ -124,7 +124,7 @@ header{
   right: 0;
   z-index: 1;
   margin: 16px 32px;
-  padding: 12px 32px;
+  padding: 8px 32px;
   background: #f7f7f7;
   border-radius: 16px;
 }
@@ -136,11 +136,8 @@ a {
   font-weight: bold;
   font-size: 16px;
 }
-
-a:hover{
-  background: #8B5CF6;
-  color: #f7f7f7;
-  border-radius: 8px;
+header>div>a{
+  font-size: 20px;
 }
 
 nav {
@@ -148,6 +145,11 @@ nav {
   align-items: center;
   gap: 24px;
   margin-right: 16px;
+}
+nav>a:hover{
+  background: #8B5CF6;
+  color: #f7f7f7;
+  border-radius: 8px;
 }
 
 h2 {
