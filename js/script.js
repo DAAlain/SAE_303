@@ -1,15 +1,8 @@
 const map = document.getElementById("map");
 
-// Variable pour stocker le tooltip actuel
-let currentTooltip = "";
-
 // Fonction pour mettre une couleur suivant son intensité sur un pays suivant les données de chaque réseau
 function couleur(reseau) {
-  // Supprimer le tooltip actuel, s'il existe
-  if (currentTooltip) {
-    currentTooltip.remove();
-    currentTooltip = "";
-  }
+  document.querySelector(".tooltip")?.remove();
 
   const { data, startColor, endColor } = reseau;
 
