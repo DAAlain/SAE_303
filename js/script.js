@@ -1,9 +1,14 @@
 const map = document.getElementById("map");
 
+// Créer un seul élément de tooltip à l'avance
+const tooltip = document.createElement('div');
+tooltip.className = 'tooltip';
+tooltip.style.position = 'absolute'; // Assurez-vous que le tooltip est positionné absolument
+tooltip.style.display = 'none'; // Le tooltip est caché par défaut
+document.body.appendChild(tooltip);  // Ajouter le tooltip au body
+
 // Fonction pour mettre une couleur suivant son intensité sur un pays suivant les données de chaque réseau
 function couleur(reseau) {
-  document.querySelector(".tooltip")?.remove();
-
   const { data, startColor, endColor } = reseau;
 
   // Sélectionner tous les pays de la carte
@@ -20,14 +25,13 @@ function couleur(reseau) {
 
       // Ajouter l'événement hover pour afficher un tooltip avec les données
       country.addEventListener('mouseover', (event) => {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'tooltip'; 
-        tooltip.innerHTML = `${countryId}: ${countryData} heures`; 
+        // Mettre à jour le contenu du tooltip
+        tooltip.innerHTML = `${countryId}: ${countryData} heures`;
 
-        // Ajouter le tooltip au body
-        document.body.appendChild(tooltip); 
+        // Afficher le tooltip
+        tooltip.style.display = 'block';
 
-        // Mettre à jour la position du tooltip avec la souris
+        // Mettre à jour la position du tooltip
         const updateTooltipPosition = (e) => {
           tooltip.style.left = `${e.pageX + 10}px`; 
           tooltip.style.top = `${e.pageY + 10}px`; 
@@ -38,8 +42,8 @@ function couleur(reseau) {
 
         // Retirer le tooltip lorsqu'on sort du pays
         country.addEventListener('mouseout', () => {
-          document.removeEventListener('mousemove', updateTooltipPosition);
-          tooltip.remove(); 
+          tooltip.style.display = 'none'; 
+          document.removeEventListener('mousemove', updateTooltipPosition); 
         });
       });
     }
@@ -70,4 +74,3 @@ document.getElementById("tiktok").addEventListener("click", () => couleur(Reseau
 document.getElementById("linkedin").addEventListener("click", () => couleur(Reseaux.Linkedin));
 document.getElementById("snapchat").addEventListener("click", () => couleur(Reseaux.Snapchat));
 document.getElementById("x").addEventListener("click", () => couleur(Reseaux.X));
-
