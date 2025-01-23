@@ -1,10 +1,9 @@
-
 const map = document.getElementById("map");
 
 // Variable pour stocker le tooltip actuel
 let currentTooltip = "";
 
-// Fonction pour mettre une couleur et son intensité sur un pays suivant les données de chaque réseau
+// Fonction pour mettre une couleur suivant son intensité sur un pays suivant les données de chaque réseau
 function couleur(reseau) {
   // Supprimer le tooltip actuel, s'il existe
   if (currentTooltip) {
@@ -19,26 +18,26 @@ function couleur(reseau) {
 
   // Parcourir chaque pays et appliquer la couleur en fonction des données
   Pays.forEach((country) => {
-    const countryId = country.id; // ID du pays dans la carte, qui doit correspondre aux codes pays (ex: "FR" pour la France)
-    const countryData = data[countryId]; // Récupère les données pour le pays
+    const countryId = country.id; 
+    const countryData = data[countryId]; 
     if (countryData) {
-      const value = parseFloat(countryData); // Convertir en nombre
-      const color = getColor(value, startColor, endColor); // Obtenir la couleur correspondant à l'intensité
-      country.style.fill = color; // Appliquer la couleur au pays
+      const value = parseFloat(countryData); 
+      const color = getColor(value, startColor, endColor); 
+      country.style.fill = color; 
 
       // Ajouter l'événement hover pour afficher un tooltip avec les données
       country.addEventListener('mouseover', (event) => {
         const tooltip = document.createElement('div');
-        tooltip.className = 'tooltip'; // Classe CSS pour le style
-        tooltip.innerHTML = `${countryId}: ${countryData} heures`; // Afficher le pays et la donnée
+        tooltip.className = 'tooltip'; 
+        tooltip.innerHTML = `${countryId}: ${countryData} heures`; 
 
         // Ajouter le tooltip au body
         document.body.appendChild(tooltip); 
 
         // Mettre à jour la position du tooltip avec la souris
         const updateTooltipPosition = (e) => {
-          tooltip.style.left = `${e.pageX + 10}px`; // Décalage à droite
-          tooltip.style.top = `${e.pageY + 10}px`;  // Décalage vers le bas
+          tooltip.style.left = `${e.pageX + 10}px`; 
+          tooltip.style.top = `${e.pageY + 10}px`; 
         };
 
         // Suivre la position de la souris
@@ -49,31 +48,24 @@ function couleur(reseau) {
           document.removeEventListener('mousemove', updateTooltipPosition);
           tooltip.remove(); 
         });
-
-        // Garder une référence du tooltip actuel
-        currentTooltip = tooltip;
       });
     }
   });
 }
 
-// Fonction pour mapper le temps passé sur l'application à une couleur
+// Fonction pour avoir la couleur suivant le temps passé sur l'application
 function getColor(value, startColor, endColor) {
-  const max = 50; // Temps maximal pour l'échelle
-  const min = 0;  // Temps minimal pour l'échelle
+  const max = 50; 
+  const min = 0;  
 
-  // Clamp la valeur entre min et max
   value = Math.max(min, Math.min(max, value));
 
-  // Normaliser la valeur entre 0 et 1
   const ratio = (value - min) / (max - min);
 
-  // Interpoler les valeurs R, G, B
   const r = Math.round(startColor.r + ratio * (endColor.r - startColor.r));
   const g = Math.round(startColor.g + ratio * (endColor.g - startColor.g));
   const b = Math.round(startColor.b + ratio * (endColor.b - startColor.b));
 
-  // Convertir en format hexadécimal
   return `rgb(${r}, ${g}, ${b})`;
 }
 
