@@ -1,3 +1,60 @@
+   // Extraction des données
+    const ADS = Reseaux.ADS;
+
+    // Couleurs pour chaque segment
+    const COLORS = ["#FF5733", "#FFBD33", "#75FF33", "#33FF57", "#33D4FF", "#335BFF", "#8D33FF"];
+
+    // Référence au SVG
+    const pieChart = document.getElementById("pie-chart");
+
+    // Conversion des valeurs en nombres et calcul du total
+    const total = Object.values(ADS).reduce((sum, value) => sum + parseFloat(value), 0);
+
+    // Variables pour le tracé
+    let cumulativeAngle = 0;
+
+    // Création des segments
+    Object.entries(ADS).forEach(([platform, value], index) => {
+      const numericValue = parseFloat(value);
+      const percentage = numericValue / total;
+      const angle = percentage * 360; // Angle en degrés
+
+      // Coordonnées pour la fin de l'arc
+      const x = Math.cos((cumulativeAngle + angle) * Math.PI / 180);
+      const y = Math.sin((cumulativeAngle + angle) * Math.PI / 180);
+
+      // Grand arc ou petit arc
+      const largeArc = angle > 180 ? 1 : 0;
+
+      // Définition du chemin pour ce segment
+      const pathData = `
+        M 0 0 
+        L ${Math.cos(cumulativeAngle * Math.PI / 180)} ${Math.sin(cumulativeAngle * Math.PI / 180)}
+        A 1 1 0 ${largeArc} 1 ${x} ${y}
+        Z
+      `;
+
+      // Création d'un élément SVG `<path>`
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", pathData);
+      path.setAttribute("fill", COLORS[index % COLORS.length]);
+      path.setAttribute("stroke", "#fff");
+      path.setAttribute("stroke-width", "0.005");
+
+      // Ajout du segment au SVG
+      pieChart.appendChild(path);
+
+      // Mise à jour de l'angle cumulé
+      cumulativeAngle += angle;
+    });
+
+
+
+
+
+
+//Script pour le svg de la carte du monde
+
 const map = document.getElementById("map");
 
 // Créer un seul élément de tooltip à l'avance
