@@ -370,7 +370,7 @@ function couleur(reseau) {
         if (countryInfo?.platforms?.usageStats) {
           const platformStats = countryInfo.platforms.usageStats[platformName.toLowerCase()];
           if (platformStats) {
-            tooltip.innerHTML = `${countryId}: ${platformStats}`;
+            tooltip.innerHTML = `${countryName} : ${platformStats}`;
             tooltip.style.display = 'block';
             
             // Mettre à jour la position du tooltip
@@ -426,16 +426,34 @@ function getColor(value, startColor, endColor) {
   return color;
 }
 
-// Écouteurs pour les boutons
-document.getElementById("facebook").addEventListener("click", () => couleur(Reseaux.Facebook));
-document.getElementById("youtube").addEventListener("click", () => couleur(Reseaux.Youtube));
-document.getElementById("instagram").addEventListener("click", () => couleur(Reseaux.Instagram));
-document.getElementById("tiktok").addEventListener("click", () => couleur(Reseaux.Tiktok));
-document.getElementById("whatsapp").addEventListener("click", () => couleur(Reseaux.Whatsapp));
+// Fonction pour gérer l'état actif des boutons
+function handleButtonActive(clickedButton) {
+  // Retire la classe active de tous les boutons
+  document.querySelectorAll('.btreseau > button').forEach(button => {
+    button.classList.remove('active');
+  });
+  // Ajoute la classe active au bouton cliqué
+  clickedButton.classList.add('active');
+}
 
-/*document.getElementById("linkedin").addEventListener("click", () => couleur(Reseaux.Linkedin));
-document.getElementById("snapchat").addEventListener("click", () => couleur(Reseaux.Snapchat));
-document.getElementById("x").addEventListener("click", () => couleur(Reseaux.X));*/
-
-const isoList = Array.from(map.querySelectorAll("path")).map(path => path.id);
-console.log(isoList);
+// Modification des écouteurs d'événements pour les boutons
+document.getElementById("facebook").addEventListener("click", (e) => {
+  couleur(Reseaux.Facebook);
+  handleButtonActive(e.target);
+});
+document.getElementById("youtube").addEventListener("click", (e) => {
+  couleur(Reseaux.Youtube);
+  handleButtonActive(e.target);
+});
+document.getElementById("instagram").addEventListener("click", (e) => {
+  couleur(Reseaux.Instagram);
+  handleButtonActive(e.target);
+});
+document.getElementById("tiktok").addEventListener("click", (e) => {
+  couleur(Reseaux.Tiktok);
+  handleButtonActive(e.target);
+});
+document.getElementById("whatsapp").addEventListener("click", (e) => {
+  couleur(Reseaux.Whatsapp);
+  handleButtonActive(e.target);
+});

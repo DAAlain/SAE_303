@@ -4606,12 +4606,12 @@ function displayCountryStats(countryCode) {
                     <h5>Par genre</h5>
                     <div class="gender-items">
                         <div class="gender-item">
-                            <span>Hommes</span>
-                            <span>${countryData.demographicsSplit.gender.male}</span>
+                            <span class="gender-range">Hommes</span>
+                            <span class="gender-percentage">${countryData.demographicsSplit.gender.male}</span>
                         </div>
                         <div class="gender-item">
-                            <span>Femmes</span>
-                            <span>${countryData.demographicsSplit.gender.female}</span>
+                            <span class="gender-range">Femmes</span>
+                            <span class="gender-percentage">${countryData.demographicsSplit.gender.female}</span>
                         </div>
                     </div>
                 </div>

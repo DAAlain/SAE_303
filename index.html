@@ -31,8 +31,19 @@
    <main>
       <header>
          <div class="logo bakbak-one-regular"><a href="index.html">SOCIALS STATS</a></div>
-         <nav><a href="#graphique">Graphique</a><a href="">Cyber-Harcelement</a></nav>
+         <nav><a href="#graphique">Graphique</a><a href="#detail">Statistiques</a><a href="">Cyber-Harcelement</a></nav>
       </header>
+
+      <!--
+      ╔═══════════════════════════════════════════════════════════════════════════╗
+      ║                              PAGE ACCUEIL                                 ║
+      ║                                                                           ║
+      ║   Cette section contient les éléments de la page d'accueil                ║
+      ║   - Titre principal et texte introductif                                  ║
+      ║   - Statistiques sur les réseaux sociaux                                  ║
+      ║   - Graphique circulaire sur le nombres d'utilisateurs                    ║
+      ╚═══════════════════════════════════════════════════════════════════════════╝
+      -->
 
       <div class="accueil">
          <div class="texteaccueil">
@@ -50,16 +61,20 @@
          </div>
          <div class="graphiqueaccueil">
             <h3 class="bakbak-one-regular">Nombre d'utilisateurs par réseaux sociaux</h3>
-            <svg class="donut-chart" viewBox="0 0 800 400">
-               <!-- Le graphique sera généré dynamiquement -->
-           </svg>
+            <svg class="donut-chart" viewBox="0 0 800 400"></svg>
          </div>
       </div>
       
-      
-
-
-
+      <!--
+      ╔═══════════════════════════════════════════════════════════════════════════╗
+      ║                              PAGE GRAPHIQUE                               ║
+      ║                                                                           ║
+      ║   Cette section contient les éléments de la page des graphiques           ║
+      ║   - Titre principal                                                       ║
+      ║   - Boutons de sélection des réseaux sociaux                              ║
+      ║   - Zone d'affichage du graphique SVG                                     ║
+      ╚═══════════════════════════════════════════════════════════════════════════╝
+      -->
 
       <div class="graphique" id="graphique">
          <div class="textegraphique">
@@ -72,12 +87,13 @@
                <button id="whatsapp">WhatsApp</button>
             </div>
          </div>
+
          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
          <!-- Created for MapSVG plugin: http://mapsvg.com -->
          <svg xmlns:mapsvg="http://mapsvg.com" xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
             xmlns="http://www.w3.org/2000/svg" mapsvg:geoViewBox="-169.110266 83.600842 190.486279 -58.508473" id="map"
-            stroke="white" strokeWidth="1px" viewport="0 0 100 100" preserveAspectRatio="">
+            stroke="white" strokeWidth="1px" viewport="0 0 100 100">
 
             <path
                d="m 479.68275,331.6274 -0.077,0.025 -0.258,0.155 -0.147,0.054 -0.134,0.027 -0.105,-0.011 -0.058,-0.091 0.006,-0.139 -0.024,-0.124 -0.02,-0.067 0.038,-0.181 0.086,-0.097 0.119,-0.08 0.188,0.029 0.398,0.116 0.083,0.109 10e-4,0.072 -0.073,0.119 z"
@@ -833,7 +849,21 @@
          </svg>
       </div>
 
-      <div class="statscards"></div>
+      <!--
+      ╔═══════════════════════════════════════════════════════════════════════════╗
+      ║                             CARTES STATISTIQUES                           ║
+      ║                                                                           ║
+      ║   Cette section contient les cartes de statistiques                       ║
+      ║   - Statistiques des réseaux sociaux                                      ║
+      ║   - Informations sur les utilisateurs                                     ║
+      ║   - Données d'engagement et d'utilisation                                 ║
+      ╚═══════════════════════════════════════════════════════════════════════════╝
+      -->
+      <div class="page-statistiques-detaillees" id="detail">
+         <h2 class="bakbak-one-regular">Sélectionnez un pays pour voir ses statistiques détaillées</h2>
+         <div class="statscards"></div>
+      </div>
+      
    </main>
    <script src="js/social-stats.js"></script>
    <script src="js/script.js"></script>

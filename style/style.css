@@ -1,4 +1,4 @@
-* {
+html {
   scroll-behavior: smooth;
 }
 
@@ -23,17 +23,38 @@ body{
 
 
 .tooltip {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 12px;
+    background-color: rgba(27, 31, 59, 0.95);
+    color: #ffffff;
+    border: 1px solid rgba(108, 99, 255, 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: "Exo", serif;
+    font-size: 14px;
     position: absolute;
-    pointer-events: none; /* Pour que le tooltip ne bloque pas les autres interactions
-    z-index: 9999; /* S'assurer qu'il est au-dessus des autres éléments */
+    pointer-events: none;
+    z-index: 9999;
     opacity: 1;
-    transition: opacity 0.1s;
-  }
+    transition: all 0.2s ease;
+    box-shadow: 0 0 15px rgba(108, 99, 255, 0.2),
+                inset 0 0 8px rgba(108, 99, 255, 0.1);
+    backdrop-filter: blur(4px);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    max-width: 250px;
+    white-space: nowrap;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(108, 99, 255, 0.3);
+}
 
 .btreseau{
   display: flex;
@@ -44,6 +65,13 @@ body{
   display: flex;
   align-items: center;
   font-size: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.btreseau > button.active {
+  color: #f7f7f7;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
 }
 
 button{
@@ -58,24 +86,29 @@ button:hover{
   color: #f7f7f7;
 }
 
-#facebook:hover{
+#facebook.active, #facebook:hover {
   background: rgb(59, 89, 152);
+  box-shadow: 0 0 15px rgba(59, 89, 152, 0.6);
 }
 
-#youtube:hover{
+#youtube.active, #youtube:hover {
   background: rgb(255, 0, 0);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
 }
 
-#instagram:hover{
+#instagram.active, #instagram:hover {
   background: rgb(193, 53, 132);
+  box-shadow: 0 0 15px rgba(193, 53, 132, 0.6);
 }
 
-#tiktok:hover{
+#tiktok.active, #tiktok:hover {
   background: rgb(0, 100, 100);
+  box-shadow: 0 0 15px rgba(0, 100, 100, 0.6);
 }
 
-#whatsapp:hover{
+#whatsapp.active, #whatsapp:hover {
   background: rgb(28, 143, 70);
+  box-shadow: 0 0 15px rgba(28, 143, 70, 0.6);
 }
 
 .accueil {
@@ -344,13 +377,16 @@ h1 {
 }
 
 .country-stat-card {
-    background: white;
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 12px;
     padding: 2rem;
     margin: 1.5rem auto;
     width: 70%;
     max-width: 900px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(139, 92, 246, 0.3),
+                0 0 15px rgba(139, 92, 246, 0.5),
+                0 0 30px rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.5);
 }
 
 .country-stat-card h3 {
@@ -358,20 +394,23 @@ h1 {
     font-size: 2rem;
     text-align: center;
     margin: 0;
-    color: #333;
+    color: #f0f0f0;
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
 }
 
 .country-stat-card h4 {
     font-family: "Bakbak One", serif;
     font-size: 1.5rem;
-    color: #444;
+    color: #f0f0f0;
     margin: 1.5rem 0 0.75rem;
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
 }
 
 .country-stat-card h5 {
     font-family: "Bakbak One", serif;
     font-size: 1.4rem;
-    color: #555;
+    color: #f0f0f0;
+    text-shadow: 0 0 6px rgba(139, 92, 246, 0.5);
 }
 
 .stat-row {
@@ -379,20 +418,21 @@ h1 {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     padding: 0.75rem;
-    background: #f8f9fa;
+    background: rgba(20, 20, 20, 0.6);
     border-radius: 12px;
 }
 
 .stat-item {
     padding: 1rem;
     text-align: center;
-    background: white;
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px rgba(139, 92, 246, 0.15);
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
 .stat-item:hover {
@@ -401,14 +441,16 @@ h1 {
 
 .stat-label {
     font-family: "Exo", serif;
-    font-size: 0.9rem;
-    color: #666;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #b8b8b8;
 }
 
 .stat-value {
     font-family: "Bakbak One", serif;
     font-size: 1.3rem;
-    color: #333;
+    color: #f0f0f0;
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
 }
 
 .platforms-grid {
@@ -419,12 +461,13 @@ h1 {
 }
 
 .platform-item {
-    background: #f8f9fa;
+    background: rgba(0, 0, 0, 0.7);
     padding: 1rem;
     border-radius: 12px;
     text-align: center;
     transition: transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.3);
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
@@ -435,22 +478,23 @@ h1 {
 }
 
 .platform-name {
-    font-family: "Bakbak One", serif;
-    font-size: 1rem;
-    margin-bottom: 0.6rem;
-    color: #444;
+  font-family: "Exo", serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #b8b8b8;
 }
 
 .platform-users {
-    font-family: "Exo", serif;
-    font-size: 0.9rem;
-    color: #666;
+    font-family: "Bakbak One", serif;
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
 }
 
 .demographics-section {
     margin-top: 2rem;
     padding: 1.5rem;
-    background: #f8f9fa;
+    background: rgba(20, 20, 20, 0.6);
     border-radius: 12px;
 }
 
@@ -481,17 +525,33 @@ h1 {
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
-    background: white;
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.3);
     font-family: "Exo", serif;
     text-align: center;
+    color: #fff;
+}
+
+.age-range, .gender-range{
+  font-family: "Exo", serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #b8b8b8;
+}
+
+.age-percentage, .gender-percentage{
+  font-family: "Bakbak One", serif;
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
 }
 
 .demographics-section h5 {
     grid-column: 1 / -1;
     margin: 0;
-    color: #333;
+    color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -523,4 +583,35 @@ main {
 .donut-chart path {
     transition: all 0.3s ease;
     cursor: pointer;
+}
+
+.textegraphique h2 {
+    font-size: 3.2rem;
+    color: #fff;
+    text-shadow: 0 0 5px #6C63FF,
+                 0 0 10px #6C63FF;
+    letter-spacing: 2px;
+    white-space: pre-line;
+}
+
+.textegraphique h2:hover {
+    text-shadow: 0 0 7px #6C63FF,
+                 0 0 12px #6C63FF;
+}
+
+.page-statistiques-detaillees h2 {
+    font-size: 3.2rem;
+    color: #fff;
+    text-shadow: 0 0 5px #6C63FF,
+                 0 0 10px #6C63FF;
+    letter-spacing: 2px;
+    white-space: pre-line;
+    text-align: center;
+    margin: 0;
+    padding-top: 80px;
+}
+
+.page-statistiques-detaillees h2:hover {
+    text-shadow: 0 0 7px #6C63FF,
+                 0 0 12px #6C63FF;
 }
