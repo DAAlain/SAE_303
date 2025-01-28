@@ -4,6 +4,7 @@
 
 body{
   margin: 0;
+  background: #1B1F3B;
 }
 
 .bakbak-one-regular {
@@ -73,80 +74,172 @@ button:hover{
   background: rgb(0, 100, 100);
 }
 
-#linkedin:hover{
-  background: rgb(0, 119, 181);
+#whatsapp:hover{
+  background: rgb(28, 143, 70);
 }
 
-#snapchat:hover{
-  background: rgb(255, 235, 112);
+.accueil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 4rem;
+    gap: 3rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    margin-top: 80px;
+    background: linear-gradient(45deg, #0f0f1880, #1a1a2580);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(108, 99, 255, 0.2);
+    flex: 0 0 auto; /* Empêche l'étirement du contenu */
 }
 
-#x:hover{
-  background: rgb(74, 74, 74);
+.texteaccueil {
+    flex: 2;
+    padding-right: 3rem;
+    max-width: 1000px;
+}
+
+.texteaccueil h1 {
+    font-size: 3.2rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 0 0 5px #6C63FF,
+                 0 0 10px #6C63FF;
+    letter-spacing: 2px;
+    white-space: pre-line;
+}
+
+.texteaccueil p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #ffffff95;
+    text-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
+}
+
+.graphiqueaccueil {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 0 25px rgba(108, 99, 255, 0.4);
+    border-radius: 15px;
+}
+
+.graphiqueaccueil h3 {
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    margin-top: 2rem;
+    text-shadow: 0 0 5px #6C63FF,
+                 0 0 10px #6C63FF;
+}
+
+.donut-chart {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
 }
 
 
-
-
-
-.accueil{
-  min-height: 100vh;
-  background: #1B1F3B;
-  padding: 96px 16px;
-  color: #d4d4d4;
-  display: flex;
-  justify-content: space-around;
-  gap: 64px;
+/* Ajout d'animations néon */
+@keyframes neonPulse {
+    0% {
+        box-shadow: 0 0 30px rgba(108, 99, 255, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(108, 99, 255, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(108, 99, 255, 0.2);
+    }
 }
 
-.texteaccueil{
-  margin-left: 64px;
+.accueil {
+    animation: neonPulse 3s infinite;
 }
 
-.texteaccueil>h1{
-  display: flex;
-  justify-content: center;
+/* Effet de survol sur les éléments */
+.texteaccueil h1:hover {
+    text-shadow: 0 0 7px #6C63FF,
+                 0 0 12px #6C63FF;
 }
 
-.graphiqueaccueil{
-  margin-right: 64px;
+.graphiqueaccueil:hover {
+    box-shadow: 0 0 25px rgba(108, 99, 255, 0.4);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
 }
 
-header{
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  margin: 16px 32px;
-  padding: 8px 32px;
-  background: #f7f7f7;
-  border-radius: 16px;
+@media (max-width: 768px) {
+    .accueil {
+        flex-direction: column;
+    }
+    
+    .texteaccueil, .graphiqueaccueil {
+        flex: 1;
+        width: 100%;
+    }
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #1a1a1a;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(108, 99, 255, 0.2);
+    border-bottom: 1px solid rgba(108, 99, 255, 0.1);
+    height: 50px; /* Fixe la hauteur du header */
 }
 
 a {
-  text-decoration: none;
-  padding: 8px 16px;
-  color: #8B5CF6;
-  font-weight: bold;
-  font-size: 16px;
+    text-decoration: none;
+    padding: 8px 16px;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
+    transition: all 0.3s ease;
 }
-header>div>a{
-  font-size: 20px;
+
+header > div > a {
+    font-size: 24px;
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+    color: #8B5CF6;
 }
 
 nav {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-right: 16px;
 }
-nav>a:hover{
-  background: #8B5CF6;
-  color: #f7f7f7;
-  border-radius: 8px;
+
+nav > a {
+    font-size: 18px;
+    font-family: "Exo", serif;
+}
+
+nav > a:hover {
+    background: #8B5CF6;
+    color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+header > div > a:hover {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.6),
+                 0 0 20px rgba(139, 92, 246, 0.4);
+    color: #a98efa;
 }
 
 h2 {
@@ -164,8 +257,7 @@ h1 {
 
 .graphique{
   min-width: 100%;
-  height: 100vh;
-  background: #1B1F3B;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,7 +270,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 64px;
+  padding-top: 80px;
   gap: 16px;
 }
 
@@ -191,4 +283,244 @@ h1 {
   position: relative;
   width: 1020px;
   height: 650px;
+}
+
+
+
+.country-selector {
+    margin: 4rem auto;
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.country-search {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    width: 400px;
+    max-width: 100%;
+    background-color: white;
+    font-family: "Exo", serif;
+    transition: border-color 0.3s ease;
+}
+
+.country-search:focus {
+    outline: none;
+    border-color: #8B5CF6;
+}
+
+.country-search:hover {
+    border-color: #666;
+}
+
+.no-data-message {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-family: "Exo", serif;
+    font-size: 1.2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.country-select {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    width: 400px;
+    max-width: 100%;
+    background-color: white;
+    font-family: "Exo", serif;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.country-select:hover {
+    border-color: #666;
+}
+
+.country-stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1.5rem auto;
+    width: 70%;
+    max-width: 900px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.country-stat-card h3 {
+    font-family: "Bakbak One", serif;
+    font-size: 2rem;
+    text-align: center;
+    margin: 0;
+    color: #333;
+}
+
+.country-stat-card h4 {
+    font-family: "Bakbak One", serif;
+    font-size: 1.5rem;
+    color: #444;
+    margin: 1.5rem 0 0.75rem;
+}
+
+.country-stat-card h5 {
+    font-family: "Bakbak One", serif;
+    font-size: 1.4rem;
+    color: #555;
+}
+
+.stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.stat-item {
+    padding: 1rem;
+    text-align: center;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-label {
+    font-family: "Exo", serif;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.stat-value {
+    font-family: "Bakbak One", serif;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.platform-item {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.platform-item:hover {
+    transform: translateY(-5px);
+}
+
+.platform-name {
+    font-family: "Bakbak One", serif;
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    color: #444;
+}
+
+.platform-users {
+    font-family: "Exo", serif;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.demographics-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.demographics-section>h4{
+  margin: 0;
+}
+
+
+.age-distribution, .gender-distribution {
+    padding: 1rem;
+}
+
+.age-distribution {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.gender-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.age-item, .gender-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    font-family: "Exo", serif;
+    text-align: center;
+}
+
+.demographics-section h5 {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .age-distribution {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .age-distribution, .gender-items {
+        grid-template-columns: 1fr;
+    }
+}
+
+main {
+    padding-top: 60px;
+    min-height: 100vh; /* Ajout de la hauteur minimale */
+    display: flex;
+    flex-direction: column;
+}
+
+.donut-label {
+    pointer-events: none;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.donut-chart path {
+    transition: all 0.3s ease;
+    cursor: pointer;
 }

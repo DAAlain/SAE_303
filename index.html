@@ -23,9 +23,11 @@
       href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Exo:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet">
 
+      
 </head>
 
 <body>
+   
    <main>
       <header>
          <div class="logo bakbak-one-regular"><a href="index.html">SOCIALS STATS</a></div>
@@ -34,39 +36,40 @@
 
       <div class="accueil">
          <div class="texteaccueil">
-            <h1 class="bakbak-one-regular">Les réseaux sociaux : entre opportunités et défis</h1>
+            <h1 class="bakbak-one-regular">Les réseaux sociaux en 2024 : 
+               Un monde connecté</h1>
             <p class="exo-regular">
-               Les réseaux sociaux, comme Facebook, Instagram ou TikTok, sont devenus incontournables. Ils permettent de
-               communiquer, partager des idées, promouvoir des entreprises ou se divertir. Cependant, leur utilisation a
-               des impacts variés.
+               Avec plus de 5.3 milliards d'utilisateurs actifs et +177 millions de nouveaux utilisateurs en 2023, les réseaux sociaux sont devenus une partie intégrante de notre quotidien.
             </p>
             <p class="exo-regular">
-               Les avantages incluent une connexion mondiale, des opportunités professionnelles et la sensibilisation à
-               des causes importantes. Les risques, en revanche, incluent l’addiction, le cyberharcèlement, la
-               propagation de fake news et des atteintes à la vie privée.
+               Le comportement des utilisateurs révèle une préférence marquée pour le mobile (96.2%) et une forte appétence pour les contenus vidéos (79%). Les photos (54%) et les stories (47%) restent également des formats populaires, tandis que 47% des utilisateurs publient du contenu de manière hebdomadaire.
             </p>
             <p class="exo-regular">
-               Pour une utilisation responsable, il est essentiel de limiter son temps d’écran, vérifier les
-               informations partagées et protéger ses données. Bien utilisés, les réseaux sociaux peuvent être un atout,
-               mais un usage excessif ou imprudent peut en révéler les dangers.
+               Les tendances émergentes comme le Social Commerce, la Réalité Augmentée et les vidéos courtes façonnent l'avenir des réseaux sociaux, tandis que les contenus non-authentiques et le marketing de masse perdent en popularité.
             </p>
          </div>
          <div class="graphiqueaccueil">
-            <p>Mettre graphique</p>
+            <h3 class="bakbak-one-regular">Nombre d'utilisateurs par réseaux sociaux</h3>
+            <svg class="donut-chart" viewBox="0 0 800 400">
+               <!-- Le graphique sera généré dynamiquement -->
+           </svg>
          </div>
       </div>
+      
+      
+
+
+
 
       <div class="graphique" id="graphique">
          <div class="textegraphique">
-            <h2 class="titre bakbak-one-regular">Temps Passé sur les réseaux sociaux</h2>
+            <h2 class="titre bakbak-one-regular">Nombres d'utilisateurs sur les réseaux sociaux</h2>
             <div class="btreseau">
                <button id="facebook">Facebook</button>
                <button id="youtube">Youtube</button>
                <button id="instagram">Instagram</button>
                <button id="tiktok">TikTok</button>
-               <button id="linkedin">Linkedin</button>
-               <button id="snapchat">Snapchat</button>
-               <button id="x">X</button>
+               <button id="whatsapp">WhatsApp</button>
             </div>
          </div>
          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -74,7 +77,7 @@
          <svg xmlns:mapsvg="http://mapsvg.com" xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
             xmlns="http://www.w3.org/2000/svg" mapsvg:geoViewBox="-169.110266 83.600842 190.486279 -58.508473" id="map"
-            stroke="white" strokeWidth="1px" viewport="0 0 100 100" preserveAspectRatio="meet">
+            stroke="white" strokeWidth="1px" viewport="0 0 100 100" preserveAspectRatio="">
 
             <path
                d="m 479.68275,331.6274 -0.077,0.025 -0.258,0.155 -0.147,0.054 -0.134,0.027 -0.105,-0.011 -0.058,-0.091 0.006,-0.139 -0.024,-0.124 -0.02,-0.067 0.038,-0.181 0.086,-0.097 0.119,-0.08 0.188,0.029 0.398,0.116 0.083,0.109 10e-4,0.072 -0.073,0.119 z"
@@ -829,10 +832,12 @@
                title="Zimbabwe" id="ZW" />
          </svg>
       </div>
-   </main>
 
-   <script src="js/donnees.js"></script>
+      <div class="statscards"></div>
+   </main>
+   <script src="js/social-stats.js"></script>
    <script src="js/script.js"></script>
+   
 
 </body>
 
