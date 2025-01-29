@@ -267,7 +267,6 @@ const countryMapping = {
   'GA': 'gabon'
 };
 
-console.log('Données disponibles:', socialMediaStats.countriesData);
 // Créer un objet Reseaux qui utilise les données de socialMediaStats
 const Reseaux = {
   Facebook: {

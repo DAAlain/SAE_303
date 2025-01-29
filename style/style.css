@@ -162,7 +162,7 @@ button:hover{
     border-radius: 15px;
 }
 
-.graphiqueaccueil h3 {
+.graphiqueaccueil h2 {
     text-align: center;
     color: #fff;
     margin: 0;
@@ -316,9 +316,21 @@ h1 {
   position: relative;
   width: 1020px;
   height: 650px;
+  padding: 10px;
 }
 
+#map path {
+  stroke: #6C63FF;
+  stroke-width: 0.5;
+  stroke-opacity: 0.4;
+  transition: stroke-opacity 0.3s ease, stroke-width 0.3s ease;
+}
 
+#map path:hover {
+  stroke-opacity: 0.8;
+  stroke-width: 1;
+  filter: drop-shadow(0 0 2px rgba(108, 99, 255, 0.5));
+}
 
 .country-selector {
     margin: 4rem auto;
@@ -614,4 +626,108 @@ main {
 .page-statistiques-detaillees h2:hover {
     text-shadow: 0 0 7px #6C63FF,
                  0 0 12px #6C63FF;
+}
+
+/* Style pour la section de comparaison */
+.country-comparison {
+    margin: 4rem auto;
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.country-comparison h2{
+    padding-top: 0px;
+}
+
+.comparison-selectors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0 0;
+}
+
+.comparison-vs {
+    font-family: "Bakbak One", serif;
+    font-size: 2rem;
+    color: #f0f0f0;
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+    padding: 1rem;
+}
+
+/* Style responsive pour la comparaison */
+@media (max-width: 768px) {
+    .comparison-selectors {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .comparison-vs {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
+}
+
+/* Style pour les cartes de comparaison */
+.comparison-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .comparison-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Style pour les différences */
+.stat-difference {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    box-shadow: 0 4px 8px rgba(139, 92, 246, 0.15);
+}
+
+.stat-difference-value {
+    font-family: "Bakbak One", serif;
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+}
+
+.stat-difference-label {
+    font-family: "Exo", serif;
+    font-size: 1rem;
+    color: #b8b8b8;
+    margin-top: 0.5rem;
+}
+
+.conseils-list {
+    color: #ffffff95;
+    margin: 1rem 0;
+    padding-left: 2rem;
+    text-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
+}
+
+.conseils-list li {
+    margin: 0.8rem 0;
+    line-height: 1.5;
+    font-size: 1.2rem;
+}
+
+.cyber-harcelement .accueil {
+    margin-bottom: 80px;
+}
+
+.cyber-harcelement .texteaccueil{
+    padding: 0;
+    max-width: 1500px;
+}
+
+.cyber-harcelement p{
+    white-space: pre-line;
 }

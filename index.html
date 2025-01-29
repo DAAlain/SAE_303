@@ -31,7 +31,7 @@
    <main>
       <header>
          <div class="logo bakbak-one-regular"><a href="index.html">SOCIALS STATS</a></div>
-         <nav><a href="#graphique">Graphique</a><a href="#detail">Statistiques</a><a href="">Cyber-Harcelement</a></nav>
+         <nav><a href="#graphique">Graphique</a><a href="#detail">Statistiques</a><a href="#cyber-harcelement">Cyber-Harcelement</a></nav>
       </header>
 
       <!--
@@ -60,7 +60,7 @@
             </p>
          </div>
          <div class="graphiqueaccueil">
-            <h3 class="bakbak-one-regular">Nombre d'utilisateurs par réseaux sociaux</h3>
+            <h2 class="bakbak-one-regular">Nombre d'utilisateurs par réseaux sociaux</h2>
             <svg class="donut-chart" viewBox="0 0 800 400"></svg>
          </div>
       </div>
@@ -78,7 +78,7 @@
 
       <div class="graphique" id="graphique">
          <div class="textegraphique">
-            <h2 class="titre bakbak-one-regular">Nombres d'utilisateurs sur les réseaux sociaux</h2>
+            <h2 class="titre bakbak-one-regular">Nombres d'utilisateurs sur les réseaux sociaux dans le monde</h2>
             <div class="btreseau">
                <button id="facebook">Facebook</button>
                <button id="youtube">Youtube</button>
@@ -862,7 +862,51 @@
       <div class="page-statistiques-detaillees" id="detail">
          <h2 class="bakbak-one-regular">Sélectionnez un pays pour voir ses statistiques détaillées</h2>
          <div class="statscards"></div>
+
+         <div class="country-comparison">
+            <h2 class="bakbak-one-regular">Comparer deux pays</h2>
+            <div class="comparison-selectors">
+               <div class="country-selector">
+                  <input type="text" 
+                        id="countrySearch1" 
+                        class="country-search" 
+                        placeholder="Premier pays..."
+                        list="countryList1">
+                  <datalist id="countryList1"></datalist>
+               </div>
+               <div class="comparison-vs">VS</div>
+               <div class="country-selector">
+                  <input type="text" 
+                        id="countrySearch2" 
+                        class="country-search" 
+                        placeholder="Second pays..."
+                        list="countryList2">
+                  <datalist id="countryList2"></datalist>
+               </div>
+            </div>
+            <div id="comparisonStatsDisplay"></div>
+         </div>
       </div>
+
+      <div class="cyber-harcelement" id="cyber-harcelement">
+         <div class="accueil">
+             <div class="texteaccueil">
+                 <h1 class="bakbak-one-regular">Le Cyber-harcèlement : Un Danger Réel sur les Réseaux Sociaux</h1>
+                 <p class="exo-regular">Le cyber-harcèlement est une forme de harcèlement qui se produit en ligne, notamment sur les réseaux sociaux. Il peut avoir des conséquences graves sur la santé mentale 
+                  et le bien-être des victimes.</p>
+                 <p class="exo-regular">Quelques conseils pour se protéger :</p>
+                 <ul class="exo-regular conseils-list">
+                     <li>Ne partagez pas d'informations personnelles sensibles en ligne</li>
+                     <li>Bloquez et signalez les utilisateurs malveillants</li>
+                     <li>Gardez des traces des messages de harcèlement comme preuves</li>
+                     <li>Parlez-en à une personne de confiance ou à des professionnels</li>
+                     <li>Utilisez les paramètres de confidentialité des réseaux sociaux</li>
+                 </ul>
+                 <p class="exo-regular">Si vous êtes victime ou témoin de cyber-harcèlement, n'hésitez pas à en parler et à chercher de l'aide. De nombreuses associations et services sont là pour vous accompagner.</p>
+             </div>
+         </div>
+     </div>
+      
       
    </main>
    <script src="js/social-stats.js"></script>

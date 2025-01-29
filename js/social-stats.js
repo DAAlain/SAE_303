@@ -4474,8 +4474,12 @@ const socialMediaStats = {
         }
     }
 };
+/*
+ * ╔═══════════════════════════════════════════════════════════════════════╗
+ * ║            Fonction globale pour formater le nom du pays              ║
+ * ╚═══════════════════════════════════════════════════════════════════════╝
+ */
 
-// Fonction globale pour formater le nom du pays
 function formatCountryName(name) {
     return name
         .replace(/([A-Z])/g, ' $1')
@@ -4483,7 +4487,12 @@ function formatCountryName(name) {
         .trim();
 }
 
-// Fonction pour mettre à jour les statistiques dans le DOM
+/*
+ * ╔═══════════════════════════════════════════════════════════════════════╗
+ * ║        Fonction pour mettre à jour les statistiques dans le DOM       ║
+ * ╚═══════════════════════════════════════════════════════════════════════╝
+ */
+
 function updateSocialStats() {
     const statsContainer = document.querySelector('.statscards');
     if (!statsContainer) return;
@@ -4542,10 +4551,13 @@ function updateSocialStats() {
         }
     });
 }
+/*
+ * ╔═══════════════════════════════════════════════════════════════════════╗
+ * ║            Fonction pour afficher les statistiques d'un pays          ║
+ * ╚═══════════════════════════════════════════════════════════════════════╝
+ */
 
-// Modifier la fonction displayCountryStats pour gérer les données manquantes
 function displayCountryStats(countryCode) {
-    // Accéder directement aux données du pays au lieu d'utiliser getCountryData
     const countryData = socialMediaStats.countriesData[countryCode];
     const statsDisplay = document.getElementById('countryStatsDisplay');
     
@@ -4620,7 +4632,121 @@ function displayCountryStats(countryCode) {
     `;
 } 
 
-// Appeler la fonction quand le DOM est chargé
+/*
+ * ╔═══════════════════════════════════════════════════════════════════════╗
+ * ║ Fonction pour initialiser les sélecteurs des pays pour la comparaison ║
+ * ╚═══════════════════════════════════════════════════════════════════════╝
+ */
+
+function initializeCountryComparison() {
+    const countries = Object.keys(socialMediaStats.countriesData)
+        .filter(key => key !== 'getCountryData' && key !== 'compareCountries')
+        .sort();
+
+    // Remplir les datalists
+    const datalist1 = document.getElementById('countryList1');
+    const datalist2 = document.getElementById('countryList2');
+    
+    countries.forEach(country => {
+        const formattedName = formatCountryName(country);
+        const option1 = document.createElement('option');
+        const option2 = document.createElement('option');
+        option1.value = formattedName;
+        option2.value = formattedName;
+        datalist1.appendChild(option1);
+        datalist2.appendChild(option2);
+    });
+
+    // Gérer les événements de sélection
+    const input1 = document.getElementById('countrySearch1');
+    const input2 = document.getElementById('countrySearch2');
+    
+    function handleCountrySelection() {
+        const country1 = input1.value;
+        const country2 = input2.value;
+        
+        if (country1 && country2) {
+            displayCountryComparison(country1, country2);
+        }
+    }
+
+    input1.addEventListener('change', handleCountrySelection);
+    input2.addEventListener('change', handleCountrySelection);
+}
+
+/*
+ * ╔═══════════════════════════════════════════════════════════════════════╗
+ * ║           Fonction pour afficher la comparaison de 2 pays             ║
+ * ╚═══════════════════════════════════════════════════════════════════════╝
+ */
+
+function displayCountryComparison(country1Name, country2Name) {
+    const reverseMapping = {};
+    Object.keys(socialMediaStats.countriesData)
+        .filter(key => key !== 'getCountryData' && key !== 'compareCountries')
+        .forEach(country => {
+            reverseMapping[formatCountryName(country)] = country;
+        });
+
+    const country1Data = socialMediaStats.countriesData[reverseMapping[country1Name]];
+    const country2Data = socialMediaStats.countriesData[reverseMapping[country2Name]];
+    
+    if (!country1Data || !country2Data) {
+        document.getElementById('comparisonStatsDisplay').innerHTML = 
+            '<p class="error-message">Données non disponibles pour un ou les deux pays.</p>';
+        return;
+    }
+
+    const comparisonHTML = `
+        <div class="comparison-stats">
+            <div class="country-stat-card">
+                <h3>${country1Name}</h3>
+                <div class="stat-row">
+                    <div class="stat-item">
+                        <span class="stat-label">Population</span>
+                        <span class="stat-value">${country1Data.population}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Utilisateurs</span>
+                        <span class="stat-value">${country1Data.socialMediaUsers}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Taux de pénétration</span>
+                        <span class="stat-value">${country1Data.penetrationRate}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="country-stat-card">
+                <h3>${country2Name}</h3>
+                <div class="stat-row">
+                    <div class="stat-item">
+                        <span class="stat-label">Population</span>
+                        <span class="stat-value">${country2Data.population}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Utilisateurs</span>
+                        <span class="stat-value">${country2Data.socialMediaUsers}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Taux de pénétration</span>
+                        <span class="stat-value">${country2Data.penetrationRate}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('comparisonStatsDisplay').innerHTML = comparisonHTML;
+}
+
+/*
+ * ╔═══════════════════════════════════════════════════════════════════════╗
+ * ║            Appeler les fonctions quand le DOM est chargé              ║
+ * ╚═══════════════════════════════════════════════════════════════════════╝
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
     updateSocialStats();
+    initializeCountryComparison();
 });
