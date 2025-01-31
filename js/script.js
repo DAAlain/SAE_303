@@ -1,6 +1,7 @@
 // Ajouter au début du fichier
 document.addEventListener('DOMContentLoaded', function() {
   createDonutChart();
+  createBarChart();
 });
 
 function createDonutChart() {
@@ -136,28 +137,7 @@ function createDonutChart() {
     function hideLabel() {
         labelGroup.style.opacity = '0';
     }
-
-    // Ajouter les labels avec effet hover
-    const label = g.append('text')
-        .attr('class', 'donut-label')
-        .attr('text-anchor', 'middle')
-        .attr('dy', '0.35em')
-        .style('fill', '#fff')
-        .style('font-family', 'Exo, serif')
-        .style('transition', 'all 0.3s ease')
-        .text('');
-
-    // Ajouter l'effet hover sur les segments
-    segments.on('mouseover', function(d) {
-        const segment = d3.select(this);
-        segment.style('transform', 'scale(1.05)');
-    })
-    .on('mouseout', function() {
-        const segment = d3.select(this);
-        segment.style('transform', 'scale(1)');
-    });
 }
-
 
 // Fonction utilitaire pour créer des éléments SVG
 function createSVGElement(type) {
@@ -456,3 +436,108 @@ document.getElementById("whatsapp").addEventListener("click", (e) => {
   couleur(Reseaux.Whatsapp);
   handleButtonActive(e.target);
 });
+
+// Données pour le graphique du cyber-harcèlement
+const cyberHarassmentData = [
+    { category: "13-17 ans", percentage: 41 },
+    { category: "18-25 ans", percentage: 37 },
+    { category: "26-34 ans", percentage: 28 },
+    { category: "35-44 ans", percentage: 22 },
+    { category: "45+ ans", percentage: 15 }
+];
+
+function createBarChart() {
+    const svg = document.querySelector('.bar-chart');
+    const margin = { top: 40, right: 20, bottom: 60, left: 60 };
+    const width = 600 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
+
+    // Nettoyer le SVG
+    svg.innerHTML = '';
+
+    // Créer le groupe principal
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute('transform', `translate(${margin.left},${margin.top})`);
+
+    // Calculer l'échelle pour les barres
+    const barWidth = width / cyberHarassmentData.length * 0.7; // 70% de l'espace disponible
+    const barSpacing = width / cyberHarassmentData.length * 0.3; // 30% pour l'espacement
+
+    // Axe Y
+    const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    yAxis.setAttribute('class', 'y-axis');
+
+    // Créer les lignes de grille et les labels Y
+    for (let i = 0; i <= 100; i += 20) {
+        const yPos = height - (height * i / 100);
+        
+        // Ligne de grille
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute('x1', 0);
+        line.setAttribute('x2', width);
+        line.setAttribute('y1', yPos);
+        line.setAttribute('y2', yPos);
+        line.setAttribute('stroke', 'rgba(255, 255, 255, 0.1)');
+        line.setAttribute('stroke-dasharray', '2,2');
+        g.appendChild(line);
+
+        // Label Y
+        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute('x', -10);
+        text.setAttribute('y', yPos);
+        text.setAttribute('text-anchor', 'end');
+        text.setAttribute('alignment-baseline', 'middle');
+        text.setAttribute('fill', '#ffffff');
+        text.textContent = `${i}%`;
+        yAxis.appendChild(text);
+    }
+
+    // Créer les barres et les labels
+    cyberHarassmentData.forEach((d, i) => {
+        const barHeight = (height * d.percentage) / 100;
+        const xPos = (width / cyberHarassmentData.length) * i + barSpacing / 2;
+        
+        // Barre
+        const bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        bar.setAttribute('class', 'bar');
+        bar.setAttribute('x', xPos);
+        bar.setAttribute('y', height - barHeight);
+        bar.setAttribute('width', barWidth);
+        bar.setAttribute('height', barHeight);
+        bar.setAttribute('fill', `hsl(${280 + i * 15}, 70%, 60%)`);
+        
+        // Ajouter des événements de survol
+        bar.addEventListener('mouseover', () => {
+            bar.setAttribute('fill', `hsl(${280 + i * 15}, 80%, 70%)`);
+        });
+        bar.addEventListener('mouseout', () => {
+            bar.setAttribute('fill', `hsl(${280 + i * 15}, 70%, 60%)`);
+        });
+
+        // Label X (catégorie)
+        const categoryText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        categoryText.setAttribute('x', xPos + barWidth / 2);
+        categoryText.setAttribute('y', height + 30);
+        categoryText.setAttribute('text-anchor', 'middle');
+        categoryText.setAttribute('fill', '#ffffff');
+        categoryText.textContent = d.category;
+
+        // Label pourcentage
+        const percentText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        percentText.setAttribute('x', xPos + barWidth / 2);
+        percentText.setAttribute('y', height - barHeight - 10);
+        percentText.setAttribute('text-anchor', 'middle');
+        percentText.setAttribute('fill', '#ffffff');
+        percentText.textContent = `${d.percentage}%`;
+
+        g.appendChild(bar);
+        g.appendChild(categoryText);
+        g.appendChild(percentText);
+    });
+
+    // Ajouter l'axe Y
+    g.appendChild(yAxis);
+
+    // Ajouter le groupe principal au SVG
+    svg.appendChild(g);
+}

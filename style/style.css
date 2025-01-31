@@ -720,16 +720,54 @@ main {
 }
 
 .cyber-harcelement .accueil {
-    margin-bottom: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    margin-bottom: 3rem;    
 }
 
-.cyber-harcelement .texteaccueil{
-    padding: 0;
-    max-width: 1500px;
+.cyber-harcelement .accueil h2 {
+    font-size: 3.2rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 0 0 5px #6C63FF, 0 0 10px #6C63FF;
 }
 
-.cyber-harcelement p{
-    white-space: pre-line;
+.graphique-harcelement {
+    background: rgba(27, 31, 59, 0.5);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(108, 99, 255, 0.3);
+    box-shadow: 0 0 15px rgba(108, 99, 255, 0.2);
+}
+
+.graphique-harcelement h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 5px #6C63FF, 0 0 10px #6C63FF;
+    margin-bottom: 1.5rem;
+}
+
+.bar-chart .bar {
+    transition: all 0.3s ease;
+}
+
+.bar-chart .bar:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
+.bar-chart text {
+    fill: #fff;
+    font-family: "Exo", serif;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .cyber-harcelement .accueil {
+        grid-template-columns: 1fr;
+    }
 }
 
 footer {
@@ -860,4 +898,27 @@ footer {
     .footer-links a:hover {
         transform: none;
     }
+}
+
+.cyber-harcelement h2 {
+    font-size: 3.2rem;
+    color: #fff;
+    text-shadow: 0 0 5px #6C63FF,
+                 0 0 10px #6C63FF;
+    letter-spacing: 2px;
+    white-space: pre-line;
+    text-align: center;
+    margin: 0;
+    padding-top: 80px;
+}
+
+.graphique-harcelement h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 5px #6C63FF, 0 0 10px #6C63FF;
+    margin-bottom: 1.5rem;
+}
+
+.cyber-harcelement .accueil {
+    margin-top: 10px;
 }
